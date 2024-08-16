@@ -1,7 +1,7 @@
 FROM python:latest
 ENV FLASK_APP=main.py
-WORKDIR ./voteboard
 COPY --chown=root:root . ./voteboard
+WORKDIR ./voteboard
 RUN useradd -ms /bin/bash app
 RUN chown -R app db/
 RUN pip3 install -r requirements.txt
