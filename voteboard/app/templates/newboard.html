@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="entrance-container" action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <h2 id="title">New Board</h2>
+    <div class="inputBox">
+        <input type="text" placeholder="Board Title" name="title" value="{{ request.form.title }}"/>
+        <br>
+        {% for error in form.title.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+    <div class="inputBox">
+        <input type="text" placeholder="Left Side" name="left" value="{{ request.form.left }}"/>
+        <br>
+        {% for error in form.left.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+    <div class="inputBox">
+        <input type="text" placeholder="Right Side" name="right" value="{{ request.form.right }}"/>
+        <br>
+        {% for error in form.right.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+    <div class="inputBox">
+        <input type="submit" name="" id="btn" value="Create"/>
+    </div>
+</form>
+{% endblock %}

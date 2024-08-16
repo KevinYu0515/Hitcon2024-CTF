@@ -1,0 +1,119 @@
+:root {
+    line-height: 1.4;
+    font-family: 'Inter', sans-serif;
+    font-size: calc(.6rem + .4vw);
+    font-weight: 300;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card {
+    width: 70%;
+    background: #212121;
+    padding: calc(4 * .5rem);
+    margin-top: calc(4 * .5rem);
+    border-radius: 4px;
+    border: 3px solid #fab700;
+    color: white;
+}
+
+.card *:first-child {
+    margin-top: 0;
+}
+
+h1, h2, h3 {
+    font-weight: 900;
+}
+
+.input {
+    position: relative;
+}
+
+.input__label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: calc(.5rem * 0.75) calc(.5rem * .5);
+    margin: calc(.5rem * 0.75 + 3px) calc(.5rem * .5);
+    background: pink;
+    white-space: nowrap;
+    transform: translate(0, 0);
+    transform-origin: 0 0;
+    background: #212121;
+    transition: transform 120ms ease-in;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.input__field {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    border: 3px solid white;
+    padding: calc(.5rem * 1.5) .5rem;
+    color: white;
+    background: transparent;
+    border-radius: 4px;
+}
+
+.input__field:focus + .input__label,
+.input__field:not(:placeholder-shown) + .input__label {
+    transform: translate(.25rem, -65%) scale(.8);
+    color: #fab700;
+}
+
+button {
+    cursor: pointer;
+    color: currentColor;
+    padding: .5rem calc(.5rem * 2);
+    background: #fab700;
+    border: none;
+    border-radius: 4px;
+    font-weight: 900;
+}
+    
+button[type=reset]{
+    background: #212121;
+    font-weight: 200;
+}
+  
+button + button {
+    margin-left: calc(.5rem * 2);
+}
+
+.button-group {
+    margin-top: calc(.5rem * 2.5);
+}
+
+.history-container{
+    margin-top: 20px;
+    width: 70%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#response {
+    border: #212121 2px solid;
+    width: 70%;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+#response #message {
+    font-weight: 700;
+}
+
+#response #time {
+    font-size: small;
+    color:rgba(33, 33, 33, .8);
+}

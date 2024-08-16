@@ -1,0 +1,68 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    padding-bottom: 10%;
+}
+
+#userPoint{
+    color: #f9b234;
+}
+
+#app-title{
+    color: #f0f0f0;
+    padding-top: 100px;
+}
+
+.container {
+    text-align: center;
+}
+
+.commodity_container{
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.commodity_box-active{
+    cursor: pointer;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+    background-color: #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+    transform: scale(0.7);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#buyButton, #returnButton {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#sellButton, #collectionButton {
+    background-color: #f44336;
+    color: white;
+}

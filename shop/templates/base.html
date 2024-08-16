@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='card.css') }}">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="{{url_for('static', filename='action.js')}}"></script>
+    </head>
+    <body>
+        <h1 id="app-title">Vending Machine Control System</h1>
+        <div class="container">
+            <h3 id="userPoint"> MyPoint：{{ user.point }} </h3>
+        </div>
+
+        <div class="container">
+            {% block buttons %}
+            {% endblock %}
+        </div>
+        
+        <div class="commodity_container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+    {% block script %}
+    {% endblock %}
+</html>

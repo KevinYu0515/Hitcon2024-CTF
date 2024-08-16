@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提問頁面</title>
+    <link href="/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="history-container">
+        <% if (message) { %>
+            <div id="response">
+                <p><span id="message">Message：</span><%- message.text %></p>
+                <p id="time">Created on：<%= message.timestamp %></p>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

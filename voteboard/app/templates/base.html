@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    {% if request.path != '/login' and request.path != '/register' %}
+    <nav>
+        <div class="link-container">
+            <a class="link active" href="/home">Home</a>
+            <a class="link" href="/newboard">New Board</a>
+            <a class="link" href="/logout">Logout</a>
+        </div>
+    </nav>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+</body>
+{% block script %}
+{% endblock %}
+</html>

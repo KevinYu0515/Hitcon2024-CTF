@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提問頁面</title>
+    <link href="/style.css" rel="stylesheet">
+    <script src="feedback.js"></script>
+</head>
+<body>
+
+    <form id="feedbackForm" class="card" action="/submit-question" method="post">
+        <h2>LEFT YOUR FEEDBACK WITH ANYTHING YOU WANT TO ASK</h2>
+        <label class="input" for="question">
+          <input id="question" name="question" class="input__field" type="text" placeholder=" " required/>
+          <span class="input__label">Please not xss me</span>
+        </label>
+       
+        <div class="button-group">
+          <button type="submit">Submit</button>
+          <button type="reset" onclick="reset()">Clear</button>
+        </div>
+    </form>
+
+    <div class="history-container">
+        <% if (message && message.length > 0) { %>
+            <% message.forEach((msg) => { %>
+            <div id="response">
+                <p><span id="message">Message：</span><%= msg.text %></p>
+                <p id="time">Created on：<%= msg.timestamp %></p>
+            </div>
+            <% }); %>
+        <% } %>
+    </div>
+</body>
+</html>

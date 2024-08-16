@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block buttons %}
+    <a href="/"><button id="returnButton" class="button">返回</button></a>
+    <button id="sellButton" class="button">售出</button>
+{% endblock %}
+
+{% block content %}
+    <div class="format-container">
+        {% for item in items %}
+        <div class="box">
+            <div class="item">
+                <a href="#" class="item_link">
+                    <div class="item_bg collection_bg"></div>
+                    <div class="item_title">
+                        {{ item.name }}
+                    </div>
+                    <div class="item_text">
+                        Price：{{ item.price }}
+                    </div>
+                    <div class="item_text">
+                        Count：<span>{{ item.count }}</span>
+                    </div>
+                    <div class="item-count">0</div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}    
+    </div>
+{% endblock %}
+{% block script %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sellButton = document.getElementById('sellButton');
+        const collectionButton = document.getElementById('collectionButton');
+        
+        sellButton.addEventListener('click', () => {
+            sellButton.classList.toggle('active');
+            instance.post('/sell', { item: reportList })
+                .then(res => window.location.reload())
+                .catch(error => console.error('Error:', error));
+        });
+    });
+</script>
+{% endblock %}

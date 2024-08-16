@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form style="margin-top: 30px;" action="" method="post" class="entrance-container">
+    {{ form.hidden_tag() }}
+    <h2 id="title">Register</h2>
+    <div class="inputBox">
+        <input type="text" placeholder="Username" name="username" value="{{ request.form.username }}"/>
+        <br>
+        {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+    <div class="inputBox">
+        <input type="password" placeholder="Password" name="password" value="{{ request.form.password }}"/>
+        <br>
+        {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+    <div class="inputBox">
+        <input type="password" placeholder="Verify the password" name="password2" value="{{ request.form.password2 }}"/>
+        <br>
+        {% for error in form.password2.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+    <div class="inputBox">
+        <input type="submit" id="btn" value="Register"/>
+    </div>
+    <div class="group">
+        <a href="/login">Back</a>
+    </div>
+</form>
+{% endblock %}

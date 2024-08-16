@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<meta id="board-id" content="{{ board.id }}">
+<div style="width: 60%;">
+    <div class="board-title-container">
+        <button id="leftButton">{{ board.left_name }}</button>
+        <p id="left-vote" class="vote-number">{{ board.left_vote }}</p>
+        <h2 id="title">{{ board.title }}</h2>
+        <p id="right-vote" class="vote-number">{{ board.right_vote }}</p>
+        <button id="rightButton">{{ board.right_name }}</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+const boardId = $('#board-id').attr('content');
+$(document).ready(() => {
+    $('#leftButton').click(() => vote(1, -1));
+    $('#rightButton').click(() => vote(-1, 1));
+});
+
+const vote = (l, r) => {
+    $.ajax({
+        url: '/vote',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            id: boardId,
+            vote_result: {
+                left_vote: l,
+                right_vote: r
+            }
+        }),
+        success: res => {
+            $('#left-vote').text(res.left_vote > 0 ? res.left_vote : 0);
+            $('#right-vote').text(res.right_vote > 0 ? res.right_vote : 0);
+        }
+    });
+}
+</script>
+{% endblock %}

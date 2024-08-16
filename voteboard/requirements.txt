@@ -1,0 +1,7 @@
+Flask
+Flask-Login
+Flask-Migrate
+Flask-SQLAlchemy~=3.0.2
+Flask-WTF
+SQLAlchemy
+waitress

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="board-container">
+    {% for board in boards %}
+    <a href="/board?name={{ board.title }}">
+        <div class="row">
+            <div class="board-card">
+                <h3>{{ board.title }}</h3>
+                <p>{{ board.left_name }} / {{ board.right_name }}</p>
+                <p id="vote"> {{ board.left_vote }} / {{ board.right_vote }} </p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}
