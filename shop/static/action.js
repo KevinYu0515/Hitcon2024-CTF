@@ -1,8 +1,5 @@
 
 const reportList = [];
-const instance = axios.create({
-    baseURL: 'http://ip:5000',
-});
 
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.item');

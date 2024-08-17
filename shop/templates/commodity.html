@@ -1,30 +1,42 @@
 {% extends "base.html" %}
 
 {% block buttons %}
+    <div class="container">
+        <h3 id="userPoint"> Hello! {{ user.username }} </h3>
+        <h3 id="userPoint"> MyPoint：{{ user.point }} </h3>
+    </div>
     <button id="buyButton" class="button">購買</button>
     <a href="/collection"><button id="collectionButton" class="button">查看我的商品</button></a> 
+    <a href="/logout"><button id="logoutButton" class="button">登出</button></a> 
 {% endblock %}
 
 {% block content %}
     <div class="format-container">
+        {% set items_per_box = 3 %}
         {% for item in items %}
-        <div class="box">
-            <div class="item">
-                <a href="#" class="item_link">
-                    <div class="item_bg"></div>
-                    <div class="item_title">
-                        {{ item.name }}
-                    </div>
-                    <div class="item_text">
-                        Price：{{ item.price }}
-                    </div>
-                    <div class="item_text">
-                        Count：<span>{{ item.count }}</span>
-                    </div>
-                    <div class="item-count">0</div>
-                </a>
+            {% if loop.index % items_per_box == 1 %}
+            <div class="box">
+            {% endif %}
+            
+                <div class="item">
+                    <a href="#" class="item_link">
+                        <div class="item_bg"></div>
+                        <div class="item_title">
+                            {{ item.name }}
+                        </div>
+                        <div class="item_text">
+                            Price: {{ item.price }}
+                        </div>
+                        <div class="item_text">
+                            Count: <span>{{ item.count }}</span>
+                        </div>
+                        <div class="item-count">0</div>
+                    </a>
+                </div>
+            
+            {% if loop.index % items_per_box == 0 or loop.last %}
             </div>
-        </div>
+            {% endif %}
         {% endfor %}    
     </div>
 {% endblock %}
@@ -37,9 +49,13 @@
         buyButton.addEventListener('click', () => {
             buyButton.classList.toggle('active');
             collectionButton.classList.remove('active');
-            instance.post('/buy', { item: reportList })
-                .then(res => window.location.reload())
-                .catch(error => console.error('Error:', error));
+            fetch('/buy', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ item: reportList })
+                    })
+                    .then(res => window.location.reload())
+                    .catch(err => console.err(err))
         });
     });
 </script>

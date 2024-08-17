@@ -1,11 +1,12 @@
 from dataclasses import dataclass, field
-import db.action as db 
+import db.shop_action as shop_db
 from utils.commodity import Item
 from typing import Dict
 
 @dataclass
 class User:
-    point: int
+    username: str = ''
+    point: int = 10000
     items: Dict[str, Item] = field(default_factory=dict)
 
     def buy_item(self, buy_item: Item):
@@ -18,7 +19,7 @@ class User:
             else:
                 self.items[buy_item.name] = buy_item
                 self.items[buy_item.name].count = 1
-            db.update(buy_item.name, -1)
+            shop_db.update(buy_item.name, -1)
         else:
             raise ValueError(f"Not enough points to complete the purchase.")
 
@@ -28,6 +29,6 @@ class User:
             self.items[sell_name].count -= 1
             if self.items[sell_name].count == 0:
                 del self.items[sell_name]
-            db.update(sell_name, 1)
+            shop_db.update(sell_name, 1)
         else:
             raise ValueError(f"Item '{sell_name}' not found in the user's items.")

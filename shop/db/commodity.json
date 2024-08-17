@@ -1,0 +1,51 @@
+[
+    {
+        "name": "Cat Pillow",
+        "price": 200,
+        "description": "Very Soft and Cute.",
+        "count": 5000,
+        "type": "on sale"
+    },
+    {
+        "name": "Dark Theme mouse pat",
+        "price": 50,
+        "description": "Super Cool.",
+        "count": 5000,
+        "type": "on sale"
+    },
+    {
+        "name": "Cat Lamp",
+        "price": 300,
+        "description": "An indispensable study partner.",
+        "count": 5000,
+        "type": "on sale"
+    },
+    {
+        "name": "Animate Model",
+        "price": 1000,
+        "description": "Pay for your faith",
+        "count": 5000,
+        "type": "on sale"
+    },
+    {
+        "name": "Cool Notebook",
+        "price": 10,
+        "description": "Super Cool?",
+        "count": 5000,
+        "type": "on sale"
+    },
+    {
+        "name": "Canvas bag",
+        "price": 80,
+        "description": "Very durable and pretty",
+        "count": 5000,
+        "type": "on sale"
+    },
+    {
+        "name": "HackerSir{N0sSqL}",
+        "price": 0,
+        "description": "",
+        "count": 1e+100,
+        "type": "not for sale"
+    }
+]

@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 
 {% block buttons %}
-    <a href="/"><button id="returnButton" class="button">返回</button></a>
+    <div class="container">
+        <h3 id="userPoint"> Hello! {{ user.username }} </h3>
+        <h3 id="userPoint"> MyPoint：{{ user.point }} </h3>
+    </div>
+    <a href="/shop"><button id="returnButton" class="button">返回</button></a>
     <button id="sellButton" class="button">售出</button>
+    <a href="/logout"><button id="logoutButton" class="button">登出</button></a> 
 {% endblock %}
 
 {% block content %}
     <div class="format-container">
+        {% set items_per_box = 3 %}
         {% for item in items %}
-        <div class="box">
+            {% if loop.index % items_per_box == 1 %}
+            <div class="box">
+            {% endif %}
             <div class="item">
                 <a href="#" class="item_link">
                     <div class="item_bg collection_bg"></div>
@@ -24,7 +32,9 @@
                     <div class="item-count">0</div>
                 </a>
             </div>
-        </div>
+            {% if loop.index % items_per_box == 0 or loop.last %}
+            </div>
+            {% endif %}
         {% endfor %}    
     </div>
 {% endblock %}
@@ -36,9 +46,13 @@
         
         sellButton.addEventListener('click', () => {
             sellButton.classList.toggle('active');
-            instance.post('/sell', { item: reportList })
-                .then(res => window.location.reload())
-                .catch(error => console.error('Error:', error));
+            fetch('/sell', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ item: reportList })
+                    })
+                    .then(res => window.location.reload())
+                    .catch(err => console.err(err))
         });
     });
 </script>
