@@ -5,9 +5,3 @@ services:
     container_name: xss-message
     ports:
       - "3010:3010"
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge

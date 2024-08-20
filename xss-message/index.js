@@ -1,10 +1,15 @@
 import express from 'express';
 import path from 'path';
-import http from 'http';
 import axios from 'axios';
 import querystring from 'querystring';
 import puppeteer from 'puppeteer';
 import cookieParser from 'cookie-parser'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 
 const app = express();
 const port = 3010;
@@ -76,8 +81,9 @@ app.post('/preview', async (req, res) => {
     const url = req.body.url;
     if (!url) return res.status(400).send('Please provide a URL to preview');
     const browser = await puppeteer.launch({
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        executablePath: "/usr/bin/chromium",
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox', "--disable-gpu"],
+        executablePath: "/usr/bin/chromium-browser",
     });
     try {
         const page = await browser.newPage();

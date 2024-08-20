@@ -1,12 +1,10 @@
-FROM oven/bun:latest as base
-RUN apt-get update \
-    && apt-get install -y chromium \
-    && rm -rf /var/lib/apt/lists/*
+FROM node:17-alpine
+RUN apk update && apk upgrade && apk add chromium 
 
 WORKDIR /app
 ENV FLAG "HackerSir{Xssss_RevErse_T1me}"
-COPY package.json bun.lockb ./
-RUN bun install
+COPY package.json ./
+RUN npm install
 COPY . .
 EXPOSE 3010
-CMD ["bun", "start"]
+CMD ["npm", "start"]
